@@ -16,11 +16,12 @@ public class LoginFormController {
     public TextField txtpassword;
 
 
-    public void btnLoginOnAction(ActionEvent actionEvent) {
+    public void btnLoginOnAction(ActionEvent actionEvent) throws IOException {
 
         if (LoginController.getInstance().authenticateUser(txtusername.getText(),txtpassword.getText())){
-
-            new Alert(Alert.AlertType.INFORMATION, "User Found").show();
+            Stage stage=new Stage();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/todolist_form.fxml"))));
+            stage.show();
 
         }else{
             new Alert(Alert.AlertType.INFORMATION, "Please Create Account and After Login...").show();
