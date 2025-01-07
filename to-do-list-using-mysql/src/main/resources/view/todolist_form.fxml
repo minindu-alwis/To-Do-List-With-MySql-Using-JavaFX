@@ -19,7 +19,7 @@
       <TextField fx:id="newTaskNametxt" layoutX="352.0" layoutY="96.0" promptText="Task Plese" />
       <DatePicker fx:id="newTaskDatetxt" layoutX="339.0" layoutY="139.0" promptText="Add The Date" />
       <Button layoutX="400.0" layoutY="176.0" mnemonicParsing="false" onAction="#btnAddTaskOnAction" text="Add Task" />
-      <JFXListView fx:id="todolistview" layoutX="37.0" layoutY="307.0" prefHeight="87.0" prefWidth="790.0" />
+      <JFXListView fx:id="todolistview" layoutX="27.0" layoutY="245.0" prefHeight="368.0" prefWidth="798.0" />
 
    </children>
    <effect>

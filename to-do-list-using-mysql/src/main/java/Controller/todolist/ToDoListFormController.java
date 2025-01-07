@@ -3,6 +3,7 @@ import com.jfoenix.controls.JFXListView;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import models.ToDoList;
 
@@ -25,34 +26,52 @@ public class ToDoListFormController implements Initializable {
     }
 
     private void loadtask() {
-        ArrayList<ToDoList> todoListArrayList = ToDoListController.getInstance().loadTasks();
-        todoListArrayList.forEach(todoList -> {
+        try {
+            // Load tasks from the controller
+            ArrayList<ToDoList> todoListArrayList = ToDoListController.getInstance().loadTasks();
 
-            VBox vBox = new VBox();
-            vBox.getStyleClass().add("task-card");
-
-            // Only add the task name label if it's not null
-            String taskText = todoList.getTaskName();
-            if (taskText != null) {
-                Label taskName = new Label("Task: " + taskText);
-                taskName.getStyleClass().add("task-name");
-                vBox.getChildren().add(taskName);
+            // Check if the list is not empty
+            if (todoListArrayList.isEmpty()) {
+                System.out.println("No tasks to display.");
             }
 
-            // Only add the date label if it's not null
-            String taskDate = todoList.getDate();
-            if (taskDate != null) {
-                Label date = new Label("Date: " + taskDate);
-                date.getStyleClass().add("task-date");
-                vBox.getChildren().add(date);
-            }
+            // Loop through each task in the list
+            todoListArrayList.forEach(todoList -> {
+                HBox hBox = new HBox();
+                hBox.setSpacing(30);  // Set spacing between items in the HBox
+                hBox.getStyleClass().add("task-card");
 
-            CheckBox checkBox = new CheckBox("Completed");
-            checkBox.getStyleClass().add("task-checkbox");
+                // Add task name label if it's not null
+                String taskText = todoList.getTaskName();
+                if (taskText != null && !taskText.isEmpty()) {
+                    Label taskName = new Label("Task: " + taskText);
+                    taskName.getStyleClass().add("task-name");
+                    hBox.getChildren().add(taskName);
+                }
 
-            vBox.getChildren().add(checkBox);
-            todolistview.getItems().add(vBox);
-        });
+                // Add date label if it's not null
+                String taskDate = todoList.getDate();
+                if (taskDate != null && !taskDate.isEmpty()) {
+                    Label date = new Label("Date: " + taskDate);
+                    date.getStyleClass().add("task-date");
+                    hBox.getChildren().add(date);
+                }
+
+                // Add checkbox for completion
+                CheckBox checkBox = new CheckBox("Completed");
+                checkBox.getStyleClass().add("task-checkbox");
+                hBox.getChildren().add(checkBox);
+
+                // Add HBox to the ListView
+                todolistview.getItems().add(hBox);
+            });
+
+            // Log success message
+            System.out.println("Tasks loaded successfully!");
+        } catch (Exception e) {
+            // Handle any exceptions that occur during the task loading process
+            System.err.println("Error loading tasks: " + e.getMessage());
+        }
     }
 
 
