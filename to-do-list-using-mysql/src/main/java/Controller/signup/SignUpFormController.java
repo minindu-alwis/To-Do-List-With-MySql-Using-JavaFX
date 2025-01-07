@@ -1,7 +1,5 @@
-package Controller.singup;
+package Controller.signup;
 
-import Controller.login.LoginController;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +17,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class SingUpFormController implements Initializable {
+public class SignUpFormController implements Initializable {
     public TextField txtNewUserName;
     public TextField txtNewUserPassword;
     public Label userIdDisplay;
@@ -29,7 +27,7 @@ public class SingUpFormController implements Initializable {
     public void btnSingUpOnAction(ActionEvent actionEvent) throws IOException {
         boolean isRegistered = false;
         try {
-            isRegistered = SingupController.getInstance().registerUser(
+            isRegistered = SignupController.getInstance().registerUser(
                     new User(
                             userIdDisplay.getText(),
                             txtNewUserName.getText(),
@@ -64,7 +62,7 @@ public class SingUpFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String id= SingupController.getInstance().generateuserId();
+        String id= SignupController.getInstance().generateuserId();
         userIdDisplay.setText(id);
     }
 }

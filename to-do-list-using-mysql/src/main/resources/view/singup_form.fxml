@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.singup.SingUpFormController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.signup.SignUpFormController">
    <children>
       <Button layoutX="254.0" layoutY="286.0" mnemonicParsing="false" onAction="#btnSingUpOnAction" text="Sing Up Now !" />
       <Label layoutX="225.0" layoutY="47.0" text="User ID" />

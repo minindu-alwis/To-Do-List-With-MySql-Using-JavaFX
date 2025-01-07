@@ -1,22 +1,21 @@
-package Controller.singup;
+package Controller.signup;
 
 import Connection.DBConnection;
-import Controller.login.LoginController;
 import models.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SingupController implements SingupService{
+public class SignupController implements SignupService {
 
-    private static SingupController instance;
+    private static SignupController instance;
 
-    private SingupController() {
+    private SignupController() {
     }
 
-    public static SingupController getInstance() {
-        return instance == null ? instance = new SingupController() : instance;
+    public static SignupController getInstance() {
+        return instance == null ? instance = new SignupController() : instance;
     }
 
 

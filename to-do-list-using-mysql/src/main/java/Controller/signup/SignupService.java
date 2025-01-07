@@ -1,10 +1,10 @@
-package Controller.singup;
+package Controller.signup;
 
 import models.User;
 
 import java.sql.SQLException;
 
-public interface SingupService {
+public interface SignupService {
 
     boolean registerUser(User newUser) throws SQLException;
 
