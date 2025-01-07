@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controller.login.LoginFormController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.login.LoginFormController">
+   <children>
+      <Button layoutX="277.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnLoginOnAction" text="Login" />
+      <TextField fx:id="txtusername" layoutX="223.0" layoutY="88.0" />
+      <TextField fx:id="txtpassword" layoutX="224.0" layoutY="149.0" />
+      <Label layoutX="273.0" layoutY="60.0" text="Username" />
+      <Label layoutX="270.0" layoutY="124.0" text="password" />
+      <Button layoutX="268.0" layoutY="252.0" mnemonicParsing="false" onAction="#btnSingUpOnAction" text="Sing Up !" />
+   </children>
 </AnchorPane>
