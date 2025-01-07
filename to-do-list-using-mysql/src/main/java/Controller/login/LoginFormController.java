@@ -1,8 +1,14 @@
 package Controller.login;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginFormController {
 
@@ -23,11 +29,11 @@ public class LoginFormController {
 
 
 
-    public void btnSingUpOnAction(ActionEvent actionEvent) {
-
-
-
-
+    public void btnSingUpOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/singup_form.fxml"))));
+        stage.show();
     }
 
 
