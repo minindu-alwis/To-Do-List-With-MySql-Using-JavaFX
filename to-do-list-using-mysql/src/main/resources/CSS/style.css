@@ -1,0 +1,48 @@
+.task-card {
+    -fx-padding: 10;
+    -fx-spacing: 8;
+    -fx-background-color: linear-gradient(to bottom, red, yellow); /* Gradient background */
+    -fx-border-color: transparent; /* Removed the white outline */
+    -fx-border-width: 0; /* No border width */
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 6, 0.5, 0, 4);
+    -fx-alignment: center-left;
+    -fx-margin: 10;
+    -fx-pref-width: 300px;
+    -fx-text-fill: #ffffff; /* Adjusted text color for better contrast */
+}
+
+
+.task-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+    -fx-padding: 3 0 2 0;
+}
+
+.task-date {
+    -fx-font-size: 12px;
+    -fx-text-fill: #555555;
+    -fx-padding: 2 0 3 0;
+}
+
+.task-checkbox {
+    -fx-font-size: 12px;
+    -fx-text-fill: #444444;
+    -fx-padding: 3 0 0 0;
+}
+
+.jfx-list-view {
+    -fx-background-color: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+    -fx-padding: 10;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-control-inner-background: #ffffff;
+    -fx-control-inner-background-alt: #f5f5f5;
+    -fx-fixed-cell-size: 110px; /* Adjusted height to accommodate spacing */
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-spacing: 20; /* Increased spacing between cards */
+}
