@@ -42,11 +42,39 @@ public class ToDoListFormController implements Initializable {
             }
 
             for (ToDoList todoList : todoListArrayList) {
-                HBox hBox = createTaskCard(todoList);
+                HBox hBox = new HBox(30);
+                hBox.getStyleClass().add("task-card");
+
+                Label newTask = new Label("Task: " + todoList.getTaskName());
+                newTask.getStyleClass().add("task-name");
+                hBox.getChildren().add(newTask);
+
+                String taskDate = todoList.getDate();
+                if (taskDate != null && !taskDate.isEmpty()) {
+                    Label date = new Label("Date: " + taskDate);
+                    date.getStyleClass().add("task-date");
+                    hBox.getChildren().add(date);
+                }
+
+                CheckBox checkBox = new CheckBox("Completed");
+                checkBox.getStyleClass().add("task-checkbox");
+                hBox.getChildren().add(checkBox);
+
                 todolistview.getItems().add(hBox);
 
-                CheckBox checkBox = (CheckBox) hBox.lookup(".task-checkbox");
-                checkBox.setOnAction(actionEvent -> handleTaskCompletion(actionEvent, hBox, todoList.getTaskName()));
+                checkBox.setOnAction(actionEvent -> {
+                    if (checkBox.isSelected()) {
+                        String currentDate = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
+
+                        if (CompletedTaskController.getInstance().completedTask(todoList.getTaskName(), currentDate) &&
+                                ToDoListController.getInstance().deleteCompletedTask(todoList.getTaskName())) {
+                            new Alert(Alert.AlertType.INFORMATION, "Task Finished").show();
+                            todolistview.getItems().remove(hBox);
+                        } else {
+                            new Alert(Alert.AlertType.ERROR, "Task operation failed").show();
+                        }
+                    }
+                });
             }
 
             System.out.println("Tasks loaded successfully!");
@@ -55,52 +83,6 @@ public class ToDoListFormController implements Initializable {
             new Alert(Alert.AlertType.ERROR, "Error loading tasks: " + e.getMessage()).show();
         }
     }
-
-    private HBox createTaskCard(ToDoList todoList) {
-        HBox hBox = new HBox(30);
-        hBox.getStyleClass().add("task-card");
-
-        Label newTask = new Label("Task: " + todoList.getTaskName());
-        newTask.getStyleClass().add("task-name");
-        hBox.getChildren().add(newTask);
-
-        String taskDate = todoList.getDate();
-        if (taskDate != null && !taskDate.isEmpty()) {
-            Label date = new Label("Date: " + taskDate);
-            date.getStyleClass().add("task-date");
-            hBox.getChildren().add(date);
-        }
-
-        CheckBox checkBox = new CheckBox("Completed");
-        checkBox.getStyleClass().add("task-checkbox");
-        hBox.getChildren().add(checkBox);
-
-        return hBox;
-    }
-
-    private void handleTaskCompletion(ActionEvent actionEvent, HBox hBox, String taskName) {
-        CheckBox checkBox = (CheckBox) actionEvent.getSource();
-
-        if (checkBox.isSelected()) {
-            String currentDate = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
-
-            boolean taskCompleted = CompletedTaskController.getInstance().completedTask(taskName, currentDate);
-
-            if (taskCompleted) {
-                boolean taskDeleted = ToDoListController.getInstance().deleteCompletedTask(taskName);
-
-                if (taskDeleted) {
-                    new Alert(Alert.AlertType.INFORMATION, "Task Finished").show();
-                    todolistview.getItems().remove(hBox);
-                } else {
-                    new Alert(Alert.AlertType.ERROR, "Failed to delete task from ToDo List").show();
-                }
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Failed to mark task as completed").show();
-            }
-        }
-    }
-
 
 
     private void setName(){
