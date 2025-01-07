@@ -88,23 +88,33 @@ public class ToDoListFormController implements Initializable {
             return;
         }
 
-        VBox vBox = new VBox();
-        vBox.getStyleClass().add("task-card");
+        HBox hBox = new HBox();
+        hBox.setSpacing(30);  // Set spacing between items in the HBox
+        hBox.getStyleClass().add("task-card");
 
-        Label taskName = new Label("Task: " + newTaskNametxt.getText());
-        taskName.getStyleClass().add("task-name");
+        // Add task name label if it's not null
+        String taskText = newTaskNametxt.getText();
+        if (taskText != null && !taskText.isEmpty()) {
+            Label taskName = new Label("Task: " + taskText);
+            taskName.getStyleClass().add("task-name");
+            hBox.getChildren().add(taskName);
+        }
 
-        Label date = new Label("Date: " + newTaskDatetxt.getValue());
-        date.getStyleClass().add("task-date");
+        // Add date label if it's not null
+        String taskDate = newTaskDatetxt.getValue().toString();
+        if (taskDate != null && !taskDate.isEmpty()) {
+            Label date = new Label("Date: " + taskDate);
+            date.getStyleClass().add("task-date");
+            hBox.getChildren().add(date);
+        }
 
+        // Add checkbox for completion
         CheckBox checkBox = new CheckBox("Completed");
         checkBox.getStyleClass().add("task-checkbox");
+        hBox.getChildren().add(checkBox);
 
-        vBox.getChildren().addAll(taskName, date, checkBox);
-        todolistview.getItems().add(vBox);
-
-
-        String taskDate = newTaskDatetxt.getValue().toString();
+        // Add HBox to the ListView
+        todolistview.getItems().add(hBox);
 
         boolean taskAdded = ToDoListController.getInstance().addTask(new ToDoList(null, newTaskNametxt.getText(), taskDate, null));
 
