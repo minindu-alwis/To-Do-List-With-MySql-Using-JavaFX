@@ -91,6 +91,13 @@ public class ToDoListController implements ToDoListService{
 
     @Override
     public boolean deleteCompletedTask(String taskName) {
-        return false;
+        try {
+            if(DBConnection.getInstance().getConnection().createStatement().executeUpdate("DELETE FROM todolist WHERE task_name='"+taskName+"'")>0){
+                return true;
+            }
+            return false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
