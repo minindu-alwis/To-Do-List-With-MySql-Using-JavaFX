@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.completedtask.CompletedTaskFormController">
+<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #F7F9FB; -fx-font-family: 'Segoe UI';" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.completedtask.CompletedTaskFormController">
    <children>
-      <ListView fx:id="listView" layoutX="33.0" layoutY="77.0" prefHeight="280.0" prefWidth="534.0" />
-      <Button layoutX="451.0" layoutY="366.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" text="Delete" />
+      <!-- Title Section -->
+      <Label layoutX="200.0" layoutY="20.0" style="          -fx-font-size: 28px;          -fx-font-weight: bold;          -fx-text-fill: #2C3E50;" text="Your Completed Tasks" />
+
+      <!-- Task List -->
+      <ListView fx:id="listView" layoutX="50.0" layoutY="80.0" prefHeight="330.0" prefWidth="600.0" style="          -fx-background-color: #FFFFFF;          -fx-border-color: #E0E0E0;          -fx-border-radius: 10;          -fx-background-radius: 10;          -fx-padding: 10;          -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 2, 2);" />
+
+      <!-- Delete Button -->
+      <Button layoutX="550.0" layoutY="430.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="          -fx-background-color: #E74C3C;          -fx-text-fill: white;          -fx-font-size: 16px;          -fx-font-weight: bold;          -fx-border-radius: 5;          -fx-background-radius: 5;          -fx-padding: 10 20;          -fx-cursor: hand;          -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0, 2, 2);" text="Delete" />
+
+      <!-- Footer -->
+      <Label layoutX="50.0" layoutY="440.0" style="          -fx-font-size: 14px;          -fx-text-fill: #7F8C8D;" text="Manage your completed tasks " />
    </children>
 </AnchorPane>

@@ -29,20 +29,30 @@ public class CompletedTaskFormController implements Initializable {
 
         completedTaskArrayList.forEach(completedTask -> {
             VBox vBox = new VBox();
-            vBox.getStyleClass().add("vbox");
+            vBox.setStyle("-fx-background-color: linear-gradient(to bottom, #FF7E79, #FFBABA); " + // Red gradient
+                    "-fx-border-color: #FF4D4D; " + // Red border for the task container
+                    "-fx-border-width: 2px; " + // Set border width
+                    "-fx-border-radius: 10; " + // Rounded corners for the border
+                    "-fx-background-radius: 10; " + // Rounded corners for the background
+                    "-fx-padding: 15; " +
+                    "-fx-spacing: 10; " + // Space between child nodes
+                    "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);");
 
             Label taskName = new Label(completedTask.getTaskName());
-            taskName.getStyleClass().add("task-name-label");
+            taskName.setStyle("-fx-font-size: 18px; " + // Font size for task name
+                    "-fx-font-weight: bold; " +
+                    "-fx-text-fill: #4A0000;"); // Dark red for text
 
-            Label taskCompleteLbl = new Label("Task Completed Date : " + completedTask.getTaskCompletedDate());
-            taskCompleteLbl.getStyleClass().add("date-label");
+            Label taskCompleteLbl = new Label("Task Completed Date: " + completedTask.getTaskCompletedDate());
+            taskCompleteLbl.setStyle("-fx-font-size: 16px; " + // Font size for date label
+                    "-fx-text-fill: #800000;"); // Slightly lighter red for the date
 
             vBox.getChildren().addAll(taskName, taskCompleteLbl);
 
             listView.getItems().add(vBox);
         });
-
     }
+
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         ObservableList<String> items = listView.getItems();

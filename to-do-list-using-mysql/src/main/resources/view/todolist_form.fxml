@@ -18,7 +18,7 @@
             <!-- Logo -->
             <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/icons8-todo-list-100.png" />
+                  <Image url="@../Images/icons8-user-100%20(1).png" />
                </image>
             </ImageView>
 
@@ -29,29 +29,14 @@
             <Label style="-fx-text-fill: #BDC3C7; -fx-font-size: 16px; -fx-font-family: 'Segoe UI';" text="Organize your tasks" />
 
             <!-- Buttons -->
-            <Button mnemonicParsing="false" style="
-         -fx-background-color: #2980B9;
-         -fx-text-fill: white;
-         -fx-font-size: 18px;
-         -fx-font-weight: bold;
-         -fx-border-radius: 5px;
-         -fx-padding: 12px 16px;
-         -fx-cursor: hand;
-         -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0, 2, 2);
-         -fx-background-insets: 0, 1;
-         " text="All Tasks" />
+            <Button mnemonicParsing="false" style="          -fx-background-color: #2980B9;          -fx-text-fill: white;          -fx-font-size: 18px;          -fx-font-weight: bold;          -fx-border-radius: 5px;          -fx-padding: 12px 16px;          -fx-cursor: hand;          -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0, 2, 2);          -fx-background-insets: 0, 1;          " text="All Tasks" />
 
-            <Button mnemonicParsing="false" onAction="#btcViewCompletedTasksOnAction" style="
-         -fx-background-color: #16A085;
-         -fx-text-fill: white;
-         -fx-font-size: 18px;
-         -fx-font-weight: bold;
-         -fx-border-radius: 5px;
-         -fx-padding: 12px 16px;
-         -fx-cursor: hand;
-         -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0, 2, 2);
-         -fx-background-insets: 0, 1;
-         " text="Completed Tasks" />
+            <Button mnemonicParsing="false" onAction="#btcViewCompletedTasksOnAction" style="          -fx-background-color: #16A085;          -fx-text-fill: white;          -fx-font-size: 18px;          -fx-font-weight: bold;          -fx-border-radius: 5px;          -fx-padding: 12px 16px;          -fx-cursor: hand;          -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0, 2, 2);          -fx-background-insets: 0, 1;          " text="Completed Tasks" />
+            <ImageView fitHeight="312.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/icons8-to-do-list-64.png" />
+               </image>
+            </ImageView>
          </children>
       </VBox>
 
