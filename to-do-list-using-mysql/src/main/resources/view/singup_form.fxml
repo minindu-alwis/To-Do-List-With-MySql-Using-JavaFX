@@ -20,7 +20,7 @@
                <children>
                   <ImageView fitHeight="126.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/icons8-user-100%20(1).png" />
+                        <Image url="@../Images/icons8-add-user-male-100.png" />
                      </image>
                   </ImageView>
                   <Label style="-fx-font-size: 28px; -fx-text-fill: white; -fx-font-weight: bold;" text="Welcome To" />

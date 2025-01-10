@@ -5,25 +5,74 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane focusTraversable="true" prefHeight="693.0" prefWidth="852.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.todolist.ToDoListFormController">
+<AnchorPane prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: #f5f5f5; -fx-font-family: 'Arial';" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.todolist.ToDoListFormController">
    <children>
-      <Label fx:id="usenametxt" layoutX="385.0" layoutY="14.0" prefHeight="0.0" prefWidth="81.0" text="Label">
-         <font>
-            <Font size="34.0" />
-         </font>
-      </Label>
-      <TextField fx:id="newTaskNametxt" layoutX="352.0" layoutY="96.0" promptText="Task Plese" />
-      <DatePicker fx:id="newTaskDatetxt" layoutX="339.0" layoutY="139.0" promptText="Add The Date" />
-      <Button layoutX="400.0" layoutY="176.0" mnemonicParsing="false" onAction="#btnAddTaskOnAction" text="Add Task" />
-      <JFXListView fx:id="todolistview" layoutX="33.0" layoutY="211.0" prefHeight="368.0" prefWidth="778.0" />
-      <Button layoutX="649.0" layoutY="631.0" mnemonicParsing="false" onAction="#btcViewCompletedTasksOnAction" prefHeight="26.0" prefWidth="175.0" text="View Completed Tasks" />
+      <VBox layoutX="0.0" layoutY="0.0" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #2C3E50; -fx-padding: 20; -fx-spacing: 20;">
+         <children>
+            <!-- Logo -->
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/icons8-todo-list-100.png" />
+               </image>
+            </ImageView>
 
+            <!-- App Title -->
+            <Label style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold; -fx-font-family: 'Segoe UI';" text="To-Do List" />
+
+            <!-- Subtitle -->
+            <Label style="-fx-text-fill: #BDC3C7; -fx-font-size: 16px; -fx-font-family: 'Segoe UI';" text="Organize your tasks" />
+
+            <!-- Buttons -->
+            <Button mnemonicParsing="false" style="
+         -fx-background-color: #2980B9;
+         -fx-text-fill: white;
+         -fx-font-size: 18px;
+         -fx-font-weight: bold;
+         -fx-border-radius: 5px;
+         -fx-padding: 12px 16px;
+         -fx-cursor: hand;
+         -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0, 2, 2);
+         -fx-background-insets: 0, 1;
+         " text="All Tasks" />
+
+            <Button mnemonicParsing="false" onAction="#btcViewCompletedTasksOnAction" style="
+         -fx-background-color: #16A085;
+         -fx-text-fill: white;
+         -fx-font-size: 18px;
+         -fx-font-weight: bold;
+         -fx-border-radius: 5px;
+         -fx-padding: 12px 16px;
+         -fx-cursor: hand;
+         -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 6, 0, 2, 2);
+         -fx-background-insets: 0, 1;
+         " text="Completed Tasks" />
+         </children>
+      </VBox>
+
+      <!-- Main Content Area -->
+      <VBox layoutX="250.0" layoutY="0.0" prefHeight="700.0" prefWidth="650.0" style="-fx-padding: 20;">
+         <children>
+            <!-- Header Section -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <Label fx:id="usenametxt" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Hello, User!" />
+            </HBox>
+            <Label style="-fx-font-size: 16px; -fx-text-fill: #777;" text="What's on your to-do list today?" />
+            <!-- Task Input Section -->
+            <HBox alignment="CENTER" spacing="10.0" style="-fx-padding: 20;">
+               <TextField fx:id="newTaskNametxt" promptText="Enter your task" style="-fx-pref-height: 40px; -fx-font-size: 14px;                                  -fx-border-color: #ddd; -fx-background-color: #fff;                                  -fx-border-radius: 5; -fx-padding: 10;" />
+               <DatePicker fx:id="newTaskDatetxt" promptText="Select date" style="-fx-pref-height: 40px; -fx-font-size: 14px;                                   -fx-border-color: #ddd; -fx-background-color: #fff;                                   -fx-border-radius: 5; -fx-padding: 10;" />
+               <Button mnemonicParsing="false" onAction="#btnAddTaskOnAction" style="-fx-background-color: #3F51B5; -fx-text-fill: white;                               -fx-font-size: 14px; -fx-padding: 10; -fx-cursor: hand;" text="Add Task" />
+            </HBox>
+            <!-- Task List Section -->
+            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Your Tasks" />
+            <JFXListView fx:id="todolistview" prefHeight="504.0" prefWidth="610.0" style="-fx-background-color: #fff; -fx-border-color: #ddd;                                 -fx-border-radius: 5; -fx-padding: 10;" />
+         </children>
+      </VBox>
    </children>
-   <effect>
-      <ColorAdjust />
-   </effect>
 </AnchorPane>
