@@ -1,6 +1,7 @@
 package Controller.completedtask;
 
 import Connection.DBConnection;
+import Controller.todolist.ToDoListController;
 import models.CompletedTask;
 
 import java.sql.PreparedStatement;
@@ -29,7 +30,6 @@ public class CompletedTaskController implements CompletedTaskService {
 
             ResultSet rst = stmt.executeQuery();
             if (rst.next()) {
-                // Get the task_id from todolist to insert into completedtask
                 String taskId = rst.getString("task_id");
 
                 PreparedStatement prepareStm = DBConnection.getInstance().getConnection().prepareStatement(
@@ -72,6 +72,15 @@ public class CompletedTaskController implements CompletedTaskService {
 
     @Override
     public ArrayList<CompletedTask> loadCompletedTask() {
-       return null;
+        ArrayList<CompletedTask>completedTaskArrayList = new ArrayList<>();
+        try {
+            ResultSet rst = DBConnection.getInstance().getConnection().createStatement().executeQuery("SELECT task_name,completed_date FROM completedtask WHERE user_id='"+ ToDoListController.getInstance().getUserId() +"'");
+            while (rst.next()){
+                completedTaskArrayList.add(new CompletedTask(rst.getString(1),null,rst.getString(2)));
+            }
+            return completedTaskArrayList;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
